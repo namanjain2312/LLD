@@ -1,0 +1,123 @@
+Design Pattern - Chain of Responsibility Design Pattern
+Real Life Application of the above design pattern
+    1.ATM
+    2.Vending Machine
+    3.LoggingSystem/Logger
+
+What/When To Use This Pattern
+When an sender sends me a request and sender does not care meri requirement kaun fullfill karega
+then we use this design pattern
+Fig 1
+Now which ever reciver obj is free it will pick my request and i do not care kaun pick karenga
+Also see in fig reciver obj chain me linked hai
+
+See Fig 2 also
+Client has A Relationship with  Abstract Class (Handler/Processor/Reciever)  handlerReq()
+Concrete Handler has handle request and is a relationship with Above abstrat class
+
+See Fig 3 ki hum log ko kaise call karte hai
+
+
+
+
+
+
+
+
+
+LoggingSystem
+
+Centralized Logging Honi Chayiye
+
+
+
+Diff function args could be made to cater following points
+1.Handle Diff priority logs (P1,P2,P3)
+2.Handle Diff logs type (Logs.Error,Logs.Exception,Logs.Debug)
+3.Handle Diff severity of logs (High,Low)
+4.
+
+
+
+Utils (Folder)
+    Log.java (Class)
+        String logText (Objects)
+        LogType logType
+        Severity severity
+        DateTime time
+        DateTime timeToExpire
+
+    KafkaMssg.java (Class)
+        String text  (Objects)
+        DateTime pushedTime
+        Log log
+
+Manager (Folder)
+    LogManager.java (Class)
+        AddLog(Log log) (Functions)
+            if LogPushConditonInKafka = true
+                PushLogToKafka()
+
+        LogPushConditonInKafka(Log log)
+            Check Condition which all log types needed to be psuhed in kafka
+        PushLogToKafka(Log log)
+            Create Kafka Obj
+            Assign fields of Kafka
+            Call PushData(kafkaObj)
+
+    KafkaManager.java (Class)
+        PushData(KafkaMssg kafkaMssg) (Functions)
+
+
+Points To Note
+1.Add async method in AddLog() function
+2.
+
+
+
+Vending Machine
+
+Design Pattern Used - State Design Pattern
+
+
+
+1>Diagram
+See Fig 4
+
+2>Happy Flow (See Fig 5)
+    Vending Machine Idle (Idle State)
+    Insert Cash Button
+    Machine Start Accepting The Coin (Machine State changes - HasMoney State)
+    Select Product Button (Selection State)
+    (Dispense Product State)
+    (Idle State)
+
+Observation (See Fig 6)
+StateWise Operations ho rahe  hai
+i.e. Diff State Pe Diff Operation Allowed hai , to jab bhi aisa hoga then we will use
+State Design Pattern .
+See Fig 7 , we could also design Tv with the above design pattern
+
+
+See Fig 8 , ab jaise humaare pass muliple states hai , to interface of state ,
+then state1, state2 , .. diff diff classes , fir unn saari states e saare operation funct
+would be created but jo uss state me kaam aayegye unhe hi likhege (Operation) baaki ko default/exception
+return karwa denge.
+
+Saare hi operation function me product ka object rahege , so ki humne koi operation perform
+karke state change karni hai to hum kar sakhe
+
+
+UML Diagram
+See Fig 9 and Fig 10
+
+
+
+
+
+
+
+
+
+
+

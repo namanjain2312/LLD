@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DesignLoggingSystem/DesignLoggingSystem.iml" filepath="$PROJECT_DIR$/DesignLoggingSystem/DesignLoggingSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LLD/LLD.iml" filepath="$PROJECT_DIR$/LLD/LLD.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/NamanLLD.iml" filepath="$PROJECT_DIR$/.idea/NamanLLD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ParkingLot/ParkingLot.iml" filepath="$PROJECT_DIR$/ParkingLot/ParkingLot.iml" />
     </modules>
   </component>
 </project>

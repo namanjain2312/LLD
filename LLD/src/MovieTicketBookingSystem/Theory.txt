@@ -1,0 +1,120 @@
+11:09 AM -
+
+Functionality
+1>Browse movies
+2>Browse cities and theatres in that city on the basis of the selected city
+3>Get a list of movies and select a movie from it
+4>Book a movie , a seat in that theatre
+Browse movies and showtimes at different theaters.
+
+View available seats for a specific show.
+
+Book tickets for one or more seats in a show.
+Also Implement cacnellationa dn admin flow
+
+
+
+Follow Up
+1>Concurrency management
+System should handle concurrent bookings.
+
+System should be scalable to handle traffic across cities.
+
+Booking should be atomic — no overbooking allowed.
+
+Follow Up Answers
+1>Pessismestic and Optimistic Locks
+2>use of redis for locking a seat for 10 min and then automaticlly releaseing a lock
+3>
+
+
+
+
+
+Data Entites
+1>City
+CityName
+CityId
+
+2>Theatre
+TheatreId
+TheatreName
+List<Show>
+List<Screen>
+Address
+
+3>Screen
+ScreenId
+List<Seat> listOfSeat;
+Theatre
+
+
+4>Show
+ShowId -
+StartTime -
+EndTime -
+Movie -
+Screen -
+List<Seat>bookedSeat;
+
+
+5>Seats
+SeatId -
+IsOccupied -
+SeatType Enum -
+
+6>Movie
+MovieId
+MovieName
+MovieDuration
+
+7>User
+UserId
+UserName
+
+8>Payment
+PaymentId
+
+8>Booking
+BookingId
+Show
+Payment
+List<Seat>bookedSeat;
+
+
+
+
+
+Data Structres
+1>Map<City,List<Theatres>> listOfTheatresInACity;
+2>Map<City,List<Movies>> listOfMoviesInACity;
+
+
+UserFlow
+1>Select City
+2>He will recieve a list all movies available on that day
+3>He will select  movie from the list
+4>After selecting the movie he will get the list of all shows available for that movie
+5>After selecting the show he will get all possible seats in that show
+6>After sleecting a seat his movies is booked and that seat gets reserved .
+
+
+
+
+
+Objets
+1>User
+2>Movie
+MovieId
+Moviname
+Movie Duration
+3>Theatre
+4>Screen
+5>Show
+6>City
+7>Booking
+8>Seat
+9>Payement
+
+
+

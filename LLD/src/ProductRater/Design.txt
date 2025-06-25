@@ -1,0 +1,34 @@
+Core Entities
+1. Users
+2. Rating per every user
+3. Product Id
+
+API
+1. Get Form For That Product Id
+2. Submit Rating for a product id provided userId and rating
+3. Cater different type of ratings
+4. Create Two Different Types of rating
+5. For a user he could submit rating for two products having different rating
+
+DB Requirements
+1. To fetch existing rating system for a productId , if not then provide default
+productId vs ratingType
+2. productId vs [UserId and there rating]
+
+Flaw in the above design is that if we need to have multiple rating system i.e. one of 7 one of 3 then
+i need to create 100 of classes to cater them
+
+Rating Class
+    1.minRating
+    2.maxRating
+    3.ratingDescription
+    4.Rating(int minRating,int maxRating,String description)
+
+ProductRaterController
+    1.Map of productIdVsRating
+    2.CreateRatingForProductId(int productId,int maxRating,int minRating,int ratingDescription)
+    3.Map of productId vs (Map of userId vs ratingPoints)
+    4.ValidateRating(int productId,int ratingPoints,int userId)
+    5.AssignRating(int productId,int ratingPoints,int userId)
+    6.GetAllRatingForProductId(int productId)
+

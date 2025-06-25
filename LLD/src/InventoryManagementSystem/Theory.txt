@@ -1,0 +1,48 @@
+Design an Inventory Management System for an e-commerce platform like Amazon,
+where multiple warehouses store products. The system should support:
+    1.Adding/removing products to inventory
+    2.Tracking stock quantity in each warehouse
+    3.Fetching available stock of a product across all warehouses
+    4.Reserving/Unreserving stock for orders
+    5.Notifying when stock falls below threshold
+    6.Handling concurrent stock updates safely
+
+Follow Up
+    1.How would you handle inventory transfer between warehouses?
+    2.Can a product have variants (e.g., size/color)? How does that change your design?
+
+DataEntity
+
+1.Item
+
+    String itemId
+    String name
+    Map<String,String> attributes
+
+2.WareHouse
+
+    String wareHouseId
+    String name
+    Map<String, InventoryItem> inventoryMap
+
+3.InventoryItem
+
+    String itemId
+    AtomicInteger availableCount
+    AtomicInteger reservedCount
+    int threshold
+    boolean isBelowThreshold() {
+        return availableCount.get() < threshold;
+    }
+
+4.InventoryController
+
+    Map<String, Warehouse> warehouseMap;
+    boolean addItem(String itemId, int count, String warehouseId);
+    boolean removeItem(String itemId, int count, String warehouseId);
+    boolean reserveItem(String itemId, int count, String warehouseId);
+    boolean unreserveItem(String itemId, int count, String warehouseId);
+    int getItemCount(String itemId);
+    Map<String, Integer> getItemCountPerWarehouse(String itemId);
+    void notifyManager(String itemId, String warehouseId);
+

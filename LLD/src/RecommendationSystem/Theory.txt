@@ -1,0 +1,62 @@
+1>Top 10 items bought in last 30 days
+2>Recommendation System
+3>Caching
+4>We are shopping and we need to have some recommendation
+    a>If you are buying this them also buy this
+    b>Top 10 list most buyed list in this current month and things like that
+5>Do it for amazon shooping cart
+
+
+
+
+User
+
+
+Cart
+map<Product,INT>
+
+Product
+productId
+productName
+price
+
+
+ShoppingCategory
+Household
+Electronics
+
+SoldItem
+Map <Product,totalQuantitySold>
+
+
+RecommendationService
+
+analyseShoppingCategory(Cart cart)
+{
+
+}
+
+getTopSoldItem(ShoppingCategory )//Fetches top 10 sold item
+{
+    return
+}
+
+addItemToCart()
+
+buyItem()
+
+itemOrderPlacedSuccesfully()
+
+cacheUpdateAndTop10listShouldBeUpdated()
+
+
+CacheService
+
+getTopSoldItemFromCache(Shopping category)
+
+
+
+
+
+
+

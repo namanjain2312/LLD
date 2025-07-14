@@ -1,0 +1,20 @@
+Template Desing Pattern
+Why it is required and when to use it
+1>When you want all classes to follow the specific steps to process the task but also
+Need to provide the flecibility that each class can have there own logic in that specific step
+
+Some real life examples of Template Design Pattern
+1. Design a Document Processing System
+2. Design a Payment Processing System
+3. Design a Beverage Preparation System
+4. Design a Report Generation System
+5. Design a Game Character Movement System
+
+
+
+
+
+
+
+
+

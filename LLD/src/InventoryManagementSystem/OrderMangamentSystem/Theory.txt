@@ -1,0 +1,167 @@
+Notes
+1>Order management system and inventory management system are same alike
+
+
+Flow
+1>User comes to the system
+2>View products
+3>Add product to cart
+4>Place order
+5>Payement
+
+Now the above flow is the user
+
+Now as an order managemennt system we need to manage the inventory
+Now let say a user is ordering a priduct from zepto
+Now all the product he select would b delivered only from one warehouse only
+Its never the case when different product are deleiverded from diferent warehouse
+So for that we show the user only those product which are availbale in one warehouse
+Now for flow of ordering we have these objects
+1>User
+2>Product
+3>Cart
+4>Order
+5>Invoice
+6>Payement
+7>Inventory
+8>Warehouse
+
+
+Entites
+1>Product
+    int id
+    string name
+2>Product Category (Why it is important is that , when we see only one product , if we order +1+1+1 and buy 3 same item then we
+ never see 3 diffrent product , we see 1 priduct with 3 count so to support that )
+    int cateoryId
+    string categoryName
+    List<Product>
+    double price
+    addProduct()
+    removeProduct()
+
+3>Inventory
+    List<ProductCategory>
+    addProductCategory()
+    removeProductcategory()
+
+4>Warehouse
+    Inventory inventory
+    Address address
+    addItemToIvertory()
+    removeItemFromInventory()
+
+5>Address
+    pincode
+    city
+    state
+
+6>WareHouseController
+    List<Warehouse>warehouseList
+    WarehouseSelectionStrategy
+    addWarehouse()
+    removeWareHouse()
+    selectWarehouse()
+
+7>WarehouseSelectionStrategy (as we need to provide view from one warehouse items only to an user
+so this funtion will choose from which warehouse user should be shown the products)
+    selectWareHouse()
+
+8>Strategy
+    nearestWarehouseSleectionStrategy()
+    cheapestWarehouseSelectionStrategy()
+
+9>User
+    int id;
+    String userName;
+    Cart cart (Why we have added cart to user , because we think a cart is somehting which a user is
+    connected and there is one cart per user )
+    List<OrderId>orderId
+    getUserCart()
+
+10>Cart
+    Map<Integer,Integer> categoryIdvsCount
+    addItemToCart()
+    removeItemToCart()
+    emptyTheCart() //once order is completed we would call this
+    viewTheCart()
+
+11>UserController
+    List<User>userList;
+    addUser
+    removeUser
+
+12>ProductDelieverySystem(App)
+    UserController uc;
+    WareHouseController wc;
+    OrderController oc;
+    ProductDelieverySystem(List<User>userList,List<Warehouse>wareHouseList)
+    User getUser(Integer userId)
+    WareHouse getWarehouse(WareHouseSelectionStrategy wst)
+    Inventory getInventory(WareHouse warehouseId)
+    addProductToCart(User user, ProductCategory , int count)
+    placeOrder(User user, Warehouse warehouse)
+    checkout(Order order)
+
+
+
+
+
+13>Order
+    Integer orderId
+    User user
+    Address deliveryAddress
+    Map<Integer,Integer>CategoruyIdVsCount (Same map which cart have , it would be tranferred to this )
+    WareHouse assignedWareHouse
+    Invoice invoice
+    Payement payement
+    OrderStatus (Enum)
+    createNewOrder()
+    checkoutOrder()
+    {
+        RemoveItemFromTheInvoentory()//by one
+        MakePayement()
+        {
+            ifPayementSuccess
+                emptyTheCart()
+            else
+                addItemBackToInventory()//by one
+        }
+    }
+
+14>OrderController
+    List<Order>
+    Map<Integer,List<Order>>userIdVsOrders;
+    getOrderByUserId()
+    getOrderByOrderId()
+
+
+
+12>Invoice
+    TotalPrice
+    TotalTax
+    TotalFinalPrice
+
+    generateInvoice(Order order)
+
+13>Payement
+    PayementMode
+    makePyement()
+
+17>PaymentMode
+    UPI
+    Cash
+    CreditCard
+
+18>OrderStatus
+    Pending
+    Delivered
+    Undelivered
+    Return
+
+19>
+
+
+
+
+

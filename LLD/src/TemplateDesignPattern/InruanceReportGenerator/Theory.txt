@@ -1,0 +1,33 @@
+Designing health insurance report generations and its quotation generations
+
+Core Componenets
+1>InsuranceCompany
+2>Rider
+3>BasePolicy
+
+
+InsuranceCompany (Enum)
+1>NivaBupa
+2>HDFC
+3>ICICI
+
+
+Rider
+1>RiderName
+2>RiderCompany
+3>RiderDescription
+4>RiderCost
+
+BasePolicy
+1>FirstName
+2>LastName
+3>NameOfInsuranceCompany
+4>DOB
+5>PreExistingDisease
+6>List<Rider>
+
+HDFCBasePolicy implemets BasePolicy
+1>ParentName
+
+HDFCRider implemetns Rider
+1>

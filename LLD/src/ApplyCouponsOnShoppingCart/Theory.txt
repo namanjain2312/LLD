@@ -1,0 +1,53 @@
+Given a shopping cart with products and coupons and caluclate the net price after applying
+coupons on products
+Coupons can be of different types with certain condiions
+1>N% off that is 10 % off on all the items
+2>P% off on the next items
+3>D% off on Nth item Of type T
+
+Sequentially want to apply the coupns on the cart anf get the total amount
+
+So basically in a nutshell we want to apply coupons to certain product and could select the logic
+predefined basis weather a coupon could be applied on the product  or not
+
+So its basically somewhat similar to a decorator pattern where we could apply decoration to one product
+then again decorate that product wiht another thing then again and then again and so on
+
+ShoppingCart
+List<Product> productList;
+addToCart()
+getTotalPrice()
+
+Product
+string name
+double originalPrice
+productType type
+getPrice()
+getType()
+
+Item1 extend Product(Product is parent )
+Item 2 extends Product
+
+CouponDecorator (extends Product(parent))
+
+PercentageCouponDecorator() extends CouponDecorator
+Product product
+int dicsountPercentage
+getPrice()
+
+TypeCouponDecorator() extends CouponDecorator
+Product product
+int discountPercentage
+ProductType type
+getPrice()
+
+
+
+ProductType  Enum
+Electronic
+Furniture
+Kitchen
+
+
+
+

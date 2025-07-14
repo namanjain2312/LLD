@@ -1,0 +1,67 @@
+1>Design StackOverFlow
+
+User Flow
+1>User
+    Admin
+    Member
+2>SearchAQuestion
+3>PostAQuestion
+4>CommentOnQuestion
+5>UpvoteAComment
+6>AnswerOnAQuestion
+7>UpvoteOnAAnswer
+
+
+User
+    userId
+    userName
+    AccessLevel
+
+AccessLevel (Enum)
+    Admin
+    Member
+    Staff
+
+UserController
+    List<User> userList
+    User createUser(userName,userId,AccessLevel)
+    bool removeUser(userId)
+
+Post
+    postId
+    Description postDescription
+    List<answerId>
+    userId
+
+PostController
+    List<Post> postList;
+    Post createPost(postId,postDescription,userId)
+    Post deletePost(postId,userId)
+    Post searchPost(string tag/description)
+
+Answer
+    answerId
+    Description answerDescription
+    postId
+    userId
+
+AnswerController
+    Answer publishAnswer(postId,answerDescription,userId,answerId)
+    Answer removeAnswer(userId,answerId)
+
+StackOverFlow
+    1. createUser()
+    2. createPost()
+    3. publishAnswer()
+
+Description
+    title
+    body
+    tags
+
+SearchEngine
+
+    searchPost()
+
+
+

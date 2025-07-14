@@ -1,0 +1,22 @@
+What is PaymentGateway ?
+
+In short payment gateway act as an mediator between user and financial institution and helps
+to transfer money
+
+Two types of payment
+1>Peer to Peer
+2>Peer to Merchant
+    Refund
+    MultiTenancy
+
+APP
+1>User can be added , updated , deleted
+2>Instrument like (Bank , card ) etc could be added updated deleted
+3>Make Payment from U1 to U2
+    Search user to whom Amount need to be tranfered
+    Select amount and funding instrument
+    Pass information to processor
+4>Notification for operations like Add/Remove user , debit payment , credit payment etc
+
+
+

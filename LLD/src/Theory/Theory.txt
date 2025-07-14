@@ -1,0 +1,39 @@
+1>Extends vs Implements
+    Extends
+    a>Used for class inheritance
+    b>Only one class could be inherited at a time
+    c>Method could be declared in the parent class and implemeted in parent class as well and
+      could directly be used by child
+
+    Implements
+    a>Used for interface implementation
+    b>Multiple interfaces could be imlplemented by a class at a time
+    c>Methods could only be declrard in the base class and could not be implemented (certain exception)
+    d>So interface is by default public abstract void
+    e>By default the methods in the interface are public abstract void
+    c>Class implementing an interface must implement all the methods declared in the base interface
+
+2>Abtract Keyword
+    a>Abstract Method
+        1>A method without a body
+        2>Must be overridden by a subclass
+    b>Abstract Class
+        1>A class that may contain abstract methods, but also can have implemented methods.
+        2>You cannot instantiate an abstract class directly.
+
+3>Abstract Class vs Interface
+    Difference
+    a>Abstract class could have both abstract and concrete mehtods
+    b>ALl methods in interface are explicitly public
+    c>Constuctor could be created for abtract class
+    d>A class could inherit only one abstract class but could implement multipl interface
+
+4>Final Keyword
+    a>The final keyword in Java is used to declare constants and enforce immutability or unchangeability.
+    b>Final Variable → Cannot be changed once assigned
+    c>Final Method → Cannot be overridden
+    d>Final Class → Cannot be extended (inherited)
+    e>Final Parameter → Cannot be modified inside method
+
+
+

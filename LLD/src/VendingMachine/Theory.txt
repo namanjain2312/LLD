@@ -1,0 +1,59 @@
+1>State Design Pattern Used
+2>Chain Of Responsibility Principle Used
+
+
+Similarly Design TV is also State Design Pattern
+1>Off State - on Button click
+2>On State - chnage channel , change volumne , click off state
+
+Points
+1>Harr function jo state interface me declared hai , usme harr ek me vending machine ka object as
+arguement pass hoga , as state change karne me easyniess hogi
+
+Data Entities
+1>Item
+    itemId
+    itemName
+    itemPrice
+    quantity
+
+2>Slot
+    slotId
+    Item
+
+2>Machine States and Allowed Operation in each state
+    idle - pressInsertCoinButton
+    insertCoin - insertCoin , enterSlotId , Cancel Button
+    choosingTheItem - select slotId,cancel button , return the change
+    dispenseItem - dispense product
+    idle
+
+3>Coin
+    coinId
+    Denomination denomination
+    quantity
+
+4>Denomination
+    10
+    5
+    2
+    1
+
+5>Amount
+    totalAmount
+    List<Coin>
+
+4>VendingMachine
+
+5>VendingMachineController
+    bool isIdle()
+    bool insertCoin(List<Coin>)
+    Amount calculateInsertedAmount(List<Coin>)
+    Item fetchItem(slotId,Amount)
+    returnItem()
+    List<Coin> returnChange(int )
+
+
+
+
+

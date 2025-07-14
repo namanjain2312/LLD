@@ -11,6 +11,10 @@ Follow Up
     1.How would you handle inventory transfer between warehouses?
     2.Can a product have variants (e.g., size/color)? How does that change your design?
 
+
+
+
+
 DataEntity
 
 1.Item

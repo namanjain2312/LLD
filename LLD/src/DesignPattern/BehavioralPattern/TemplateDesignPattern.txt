@@ -1,0 +1,5 @@
+It is a type of behavioral desing pattern
+
+Why it is required and when to use it
+1>When you want all classes to follow the specific steps to process the task but also
+2>Need to provide the flecibility that each class can have there own logic in that specific step

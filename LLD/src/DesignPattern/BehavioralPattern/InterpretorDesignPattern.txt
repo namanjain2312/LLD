@@ -1,0 +1,12 @@
+It belongs to type of behavioral desing pattern
+Suppose there is hand sign
+1>Someone can interpret as Stop
+2>could interpret as Hi
+3>Could interpret as number 5
+etc
+
+Componetns Involved
+1>Context
+2>Abtract Expression
+    a>Terminal Expression (You cannot further dvidei it )
+    b>Non Termainla Expression (Furtehter division possible like a+b could bedivided in a , b , +)

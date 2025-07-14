@@ -1,0 +1,9 @@
+1>Using template design pattern
+2>Now we have set steps for a payment flow
+    a>Authenticate the transfer request
+    b>Debit Money
+    c>Transaction fees
+    d>Credit Money
+3>We declare all 4 steps as abstract mehtod so that base class could modify each steps accordingly
+4>Now we have sset snedMoney function as final so that no base class could overide it and could
+change the steps

@@ -1,0 +1,80 @@
+Core Functionality
+1>Onboarding a new user wallet
+2>Add & View balance in user wallet
+3>Transfer the amount from one user to other
+4>Get the transaction ledger details of a user
+5>Should support multicurrency operation
+
+Class User
+    String userId
+    String userName
+    Wallet wallet
+
+
+Class Wallet
+    String userId
+    Map<Currency, Double> balance
+    List<Transaction> ledger
+
+    boolean addAmount(Currency currency, double amount)
+    boolean deductAmount(Currency currency, double amount)
+    double getBalance(Currency currency)
+    List<Transaction> getLedger()
+    void addTransaction(Transaction t)
+
+WalletService
+    User onBoardUser(String userId,String userName)
+    void addBalance(String userId, Currency currency, double amount)
+    double viewBalance(String userId, Currency currency)
+    boolean transfer(String fromUserId, String toUserId, Currency currency, double amount)
+    List<Transaction> getLedger(String userId)
+
+Class Transaction
+    String transactionId
+    TransactionStatus transactionStatus
+    String receiverUserId
+    String senderUserId
+    Currency currency
+    DateTime transactionDateTime
+    Double amount
+
+
+Enum TransactionStatus
+    Failed
+    Success
+    Pending
+
+Enum Currency
+    INR
+    USD
+    EUR
+
+Enum TransactionType
+    CREDIT
+    DEBIT
+    TRANSFER
+
+
+
+
+1>To handle a multicurrency support we could do multiple things
+    a>Declare a default currency in the User class for a user
+    b>Declare a class CurrencyConversion which would have
+     Map<CurrencyPair, Double> conversionRates = Map.of(
+            new CurrencyPair(INR, USD), 1 / 80.0,
+            new CurrencyPair(USD, INR), 80.0,
+            // Add more
+        );
+     This map could be updated on daily basis
+    c>INR To USD Transfer
+        Sender specifies amount in their currency (INR).
+        System deducts ₹1,000 from sender's wallet.
+        System converts ₹1,000 → $12.5 using a CurrencyConverter utility.
+        System adds $12.5 to receiver's wallet.
+        Transaction logged with original and converted currency.
+    d>Add conversion rate and additional details in Transaction also
+    e>To get the total balance convert all the balance in base curreny and then return the total
+    balance
+
+2>
+

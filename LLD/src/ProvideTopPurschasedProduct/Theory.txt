@@ -1,0 +1,20 @@
+1>Top 10 items bought in last 30 days
+2>Recommendation System
+3>Caching
+4>We are shopping and we need to have some recommendation
+    a>If you are buying this them also buy this
+    b>Top 10 list most buyed list in this current month and things like that
+5>Do it for amazon shooping cart
+
+
+https://medium.com/double-pointer/system-design-interview-recommendation-system-design-as-used-by-youtube-netflix-etc-c457aaec3ab
+
+Read this
+https://www.youtube.com/watch?app=desktop&v=ontAs5VfCwo&t=0s
+
+
+System design: Amazon.com Best sellers Rank | BSR (Top 10 most sold items etc)
+Desing a recommmendation system
+Desing a youtube like  counter
+Twitter Likes Count Design | Youtube Views Count Design | Near Realtime Counter System
+

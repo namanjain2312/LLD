@@ -1,0 +1,91 @@
+1>Constructor Syntax
+class ClassName {
+    // Constructor
+    public ClassName() {
+        // Initialization logic
+    }
+}
+public class Car {
+    String model;
+
+    // Parameterized Constructor
+    public Car(String modelName) {
+        this.model = modelName;
+    }
+}
+Car car1 = new Car("BMW");
+
+2>Naming Conventions
+Element	            	    Example
+Class/Interface Name		Product, OrderManager, RecommendationEngine
+Method Name		            getUserId(), computeTotal(), sortItems()
+Field/Member Variable		userId, productList, isAvailable
+Getter Method	            getProductName(), getPrice()
+Constant/Static Final   	ALL_UPPERCASE_WITH_UNDERSCORES (MAX_RETRIES, DEFAULT_TIMEOUT)
+Package Name	            lowercase.dotted	com.amazon.recommendation
+
+3>public static void main(String[] args) {
+}
+This is the entry point of any standalone Java program
+
+4>Java collections (List, Set, etc.) work only with objects, not primitives. So we use:
+  Integer for int
+  Double for double
+  Boolean for boolean
+
+4>List vs Array List
+List is basically a interface and array list is a concrete class
+In list we could the iplmentation later on , but in array list it is not possible
+Like if we declare a list ealrlier but now
+List<String> names = new ArrayList<>();
+names = new LinkedList<>(); // converted in linked list
+Prefer List in Most Cases
+
+5>Declration Of List
+    List<Integer> numbers = new ArrayList<>();
+    List<Integer> numbers = new ArrayList<>(Arrays.asList(10, 20, 30));
+    List<Integer> numbers = new ArrayList<>();
+    numbers.add(10);
+    numbers.add(20);
+    numbers.add(30);
+
+6>Traverse a List in Java
+    for (Integer num : numbers) {
+        System.out.println(num);
+    }
+
+    for (int i = 0; i < numbers.size(); i++) {
+        System.out.println(numbers.get(i));
+    }
+
+    Iterator<Integer> it = numbers.iterator();
+    while (it.hasNext()) {
+        System.out.println(it.next());
+    }
+
+7>Synchronized
+    The synchronized keyword in Java is used to prevent concurrent access to critical
+    sections of code, ensuring thread safety.
+    synchronized ensures that only one thread can access that code block or method at a time.
+    synchronized (someSharedObject) {
+        // critical section
+    }
+
+8>Maps in java
+    Map<String, Integer> map = new HashMap<>();
+    map.put("Apple", 100);
+    for (Map.Entry<String, Integer> entry : map.entrySet()) {
+        System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+    }
+
+9>Integer → String
+    int num = 123;
+    String str = Integer.toString(num);  // "123"
+
+10>String → Integer
+    String str = "123";
+    int num = Integer.parseInt(str);  // 123
+
+11
+
+

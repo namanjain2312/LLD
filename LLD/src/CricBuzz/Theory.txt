@@ -1,0 +1,125 @@
+CrickBuzz
+Observor design pattern is been used to jupdate bowl by bowl score in the score cards etc
+
+
+class Match
+    Team A
+    Team B
+    Date
+    Venue
+    Innings[]
+    MatchType
+    Team TossWinner
+
+    startMatch()
+
+interface MatchType
+    noOfOvers()
+    maxOverPerBwolerAllowed()
+
+class OneDayMatchType implemets MatchType
+
+class T20MatchType implemets MatchType
+
+class Innings
+    Team battingTeam
+    Team bowlingTeam
+    List<Over>overs
+
+    startInnnigs()
+
+class Over
+    int overNumber
+    List<Balls>balls
+
+    startOver()
+
+class Bowl
+    int bowlNo
+    BowlType
+    RunType
+    Player playedBy
+    Player bowledBy
+    List<ScoreUpdatorObservor>
+    startBowlDlievery()
+    notify()//calls respective ScoreCardUpadtorObservor
+
+BowlType
+    NOBALL
+    WIDEBALL
+    NORMAL
+
+RunType
+    Six
+    Four
+    One
+    Two
+    WideRun
+
+
+
+class Team
+    teamName
+    Queue<Player> playing11
+    List<Player> bench
+    PlayerBattingController //used to maintian things like whjat all players have out , who is currently
+                            //on strike , who will go next etc etc
+    PlayerBowlingController
+
+class PlayerBattingController
+    Queue<Player> yetToPlay
+    Player striker
+    Player nonStriker
+
+class PlayerBowlingController
+    Dequeue<Player>bowler //why dequeue , because if a player is bwoled then he could not bowl the next
+    over , this dequeue will contains all the player who could ball and have not reacehd there max bowling
+    over limit setted in the match
+    Map<Player,Int>bowlerVsOverCount
+    Player currentBowler
+
+
+
+
+class Player
+    Person person
+    PlayerType playerType
+    BattingScoreCard
+    BowlingScoreCard
+
+class Person
+    firstName
+    lastName
+    age
+
+enum PlayerType
+    BOWLER
+    BATSMAN
+    WICKETKEEPER
+    ALLROUNDER
+    CAPTAIN
+
+class BattingScoreCard
+    int totalRuns
+    int totalBowlsPlayed
+    int totalSix
+    int totalFours
+    double strikeRate
+
+class BowlingScoreCard
+    int totalOversDelieverd
+    int runsGiven
+    int wicketTaken
+    int noBallCount
+    int wideBallCount
+
+
+interface ScoreUpdatorObservor()
+    update(Bowl)
+
+class BattingScoreCardUpdator implements ScoreUpdatorObservor
+    update(Bowl)
+
+class BowlingScoreCardUpdator implements ScoreUpdatorObservor
+    update(Bowl)
+

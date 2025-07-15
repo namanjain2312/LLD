@@ -16,4 +16,4 @@ Answer - Always use User as it is easy to understand and objects in java are Mut
         the User object but instead we store its pointing/reference , thus no extra memory and easy to
         store
 
-2>
+2>To create a has a relationship with an enum class we use dashed line for the same instead of normal line

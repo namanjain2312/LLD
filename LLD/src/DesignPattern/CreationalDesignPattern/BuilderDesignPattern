@@ -21,3 +21,13 @@ Disavantage of Builder Design Pattern
 
 Differnece Between Decorator Design Pattern and Builder Pattern
 
+Feature	        Decorator Pattern	                                        Builder Pattern
+Purpose	        Dynamically adds behavior or responsibilities to an object	Separates object construction from its representation
+Used When	    You want to add features to objects without modifying their You want to build a complex object step by step
+                code
+Focus	        Enhancing or wrapping existing objects	                    Constructing a full object with optional parameters
+Design Type	    Structural Pattern	                                        Creational Pattern
+Example Use Case:Making mushroom cheese pizza via base pizza	            Building a Pizza object with either mushroom or Cheese topping , but not both
+Key Concept	    Composition of behaviors via wrapping	                    Controlled step-by-step object creation
+Object Creation	Works on already created objects	                        Used during object creation phase
+

@@ -5,11 +5,14 @@ to transfer money
 
 Two types of payment
 1>Peer to Peer
-2>Peer to Merchant
+2>Peer to Merchant (If we go with this then we need to cater the below points also)
     Refund
     MultiTenancy
 
-APP
+
+In this we are focusing on Peer to Peer scope
+
+APP (Flow)
 1>User can be added , updated , deleted
 2>Instrument like (Bank , card ) etc could be added updated deleted
 3>Make Payment from U1 to U2
@@ -17,6 +20,110 @@ APP
     Select amount and funding instrument
     Pass information to processor
 4>Notification for operations like Add/Remove user , debit payment , credit payment etc
+5>User should be able to see the transaction history
+6>At the time of a transaction , we select our preferrend account from whichwe want amount to be
+debited , but we never select the reciever user account , so account details of the receiver
+could be picked by his preferred account preference or its default account prefernces etc
 
+
+
+
+User
+    userId
+    userName
+    userEmail
+    getter and setter
+
+UserController
+    List<User> Users;
+    addUser()
+    User getUser()
+
+Interface Instrument
+    instrumentId
+    userId
+    InstrumentType type;
+
+InstrumentType
+    Bank
+    Card
+
+Class BankInstrument implements Instrument
+     bankAccountNumber
+     bankIFSCCode
+
+Class CardInstrument implements Instrument
+    cardNumber
+    cvvNumber
+
+Abtract Class InstrumentService
+    static Map<userId,List<Instrument>> map //userId vs Instruments
+    addInstrument()
+    getInstrument()
+
+BankInstrument extends InstrumentService
+    addInstrument() //all bank specific logic and check , follow solid principles
+    getInstrument()
+
+CardInstrument extends  InstrumentService
+    addInstrument() //all card specific logic and check , follow solid principles
+    getInstrument()
+
+InstrumentServiceFactory() //use to create an instrument  from factory method
+    getInstrumentService(InstrumentType)
+
+InstrumentController
+    addInstrument()
+    getInstrument()
+
+
+TransactionController
+    TransactionService
+    makePayment()
+    getTransactionHistory()
+
+TransactionService
+    InstrumentController ic
+    Map<UserId,List<Transaction>> m
+    Processor p
+    makePayment()
+    getTransactionHistory()
+
+Transaction
+    TransactionId
+    Amount
+    senderUserId
+    recieverUserId
+    debitInstrumentId
+    creditInstrumentId
+    Transaction status //would be directly dependednt on the processor response
+
+TransactionStatus
+    Success
+    Pending
+    Denied
+
+Processor
+    processPayment(Transaction)
+
+
+PaymentGateWay (Main class)
+
+Notification
+
+
+Follow Ups
+1>What will hapen if a payment is pending for 3-4 days
+    a>We will validate the transaction in real time itself
+        1>If u1 have suffeicient funds to transfer
+        b>Is u2 is valid
+    b>We will use of async operationm and save the transaction and mark transaction as pending
+    c>We will invoke the processor in async call and tried to complete the transactio and update the
+    status as success or failure
+2>We can also add notification class to send the notification to both the user
+    Factory Method
+        sendNotificationOnMail
+        sendNotificationOnMessage
+3>Same follow ups as the payment wallet
 
 

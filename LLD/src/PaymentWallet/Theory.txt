@@ -55,7 +55,7 @@ Enum TransactionType
     TRANSFER
 
 
-
+Follow Ups
 
 1>To handle a multicurrency support we could do multiple things
     a>Declare a default currency in the User class for a user
@@ -76,5 +76,14 @@ Enum TransactionType
     e>To get the total balance convert all the balance in base curreny and then return the total
     balance
 
-2>
+2>How to handle conconcurrency (Mutiple thread said to transfer fund from A at same time )
+    a>tranferring the fund
+    b>showing the balance
+    c>showing the ledger
+
+3>How to handle idempotency (user clicked on send money mulitple time)
+    a>How to prevent double transactions (user clicked on send money mulitple time)
+
+4>How to maintain consistency (Balance view should provide the correct balance and right transaction list)
+
 

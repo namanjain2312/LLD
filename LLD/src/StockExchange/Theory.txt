@@ -1,0 +1,111 @@
+Functional Requirements
+1>Order Placement: Buy/sell from users
+2>Order Matching Engine: Pair buy & sell orders
+3>Trade Execution
+4>User Portfolio Management
+5>Real-time Price Feed & Subscription
+
+
+Enum OrderType
+    BUY
+    SELL
+
+Enum OrderStatus
+    OPEN
+    MODIFIED
+    CANCELLED
+    EXECUTED
+
+Order
+    String orderId;
+    String userId;
+    String symbol;
+    OrderType type;
+    int quantity;
+    double price;
+    long timestamp;
+    OrderStatus status;
+
+Trade
+    String tradeId;
+    String buyOrderId;
+    String sellOrderId;
+    String symbol;
+    int quantity;
+    double price;
+    long timestamp
+
+Portfolio
+    Map<String,Integer>holdings //stockSymbol - quantity
+    update()
+    getQuantiy()
+
+User
+    String userId;
+    String name;
+    Portfolio portfolio;
+    List<Order> orders;
+    List<Trade> trades
+
+OrderBook
+    PriorityQueue<Order> buyOrders; // can sort the order via Buy Price and if price same then by timestamp
+    PriorityQueue<Order> sellOrders;
+    Map<String, Order> allOrders;
+    List<Trade> addOrder(Order)
+    {
+        //Add order in sellOrders
+        match(Order)
+    }
+    List<Trade> match(Order order)
+    {
+        If(order.orderType==BUY)
+        {
+            miniQty = min(order,SellOrder.top())
+            //Now this order will be putted in buy order priority queuee and then we will check the top
+            //of both the piority queue , if match then we complete the order
+            //Similary for sell order
+        }
+    }
+    boolean cancelOrder(String orderId)
+
+StockExchange
+    Map<String, OrderBook> orderBooks = new HashMap<>(); //Symbol vs OrderBook
+     Map<String, User> users = new HashMap<>(); //userId vs Users
+
+
+Follow Ups
+1>Implement stock price feed
+    StockPriceFeed
+        private Map<String, List<PriceSubscriber>> subscribers = new HashMap<>();//symbol vs Price SubscriberList
+        private Map<String, Double> currentPrices = new HashMap<>(); // Symbol vs Price
+    interface PriceSubscriber {
+        void onPriceUpdate(String symbol, double newPrice);
+    }
+
+    We could update or stock price feed prices at the time of order mathcing , when order get
+    executed
+
+    class UserPriceAlert implements PriceSubscriber {
+        private String userId;
+
+        public UserPriceAlert(String userId) {
+            this.userId = userId;
+        }
+
+        @Override
+        public void onPriceUpdate(String symbol, double newPrice) {
+            System.out.println("[" + userId + "] Price updated: " + symbol + " = " + newPrice);
+        }
+    }
+
+
+2>How order book are implemeted (Find its answer)
+3>Concurrency and Idemptotnedcy
+4>Price Feed and live price feed
+5>How to implement cancel order
+    we could check at the time of mathcing itslef , if its still valid then only match and execute
+    the order
+
+
+
+

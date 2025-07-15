@@ -1,0 +1,19 @@
+1>Mutable vs Non-Mutable (Immutable)
+    Aspect	        Mutable	                                Immutable (Non-Mutable)
+    Definition	    Can be changed after creation	        Cannot be changed once created
+    State	        Internal state can be modified	        Internal state remains constant
+    Examples in     StringBuilder, ArrayList, HashMap	    String, Integer, LocalDate
+    Java
+    Thread-Safety	Not inherently thread-safe	            Usually thread-safe because the state doesn’t change
+    Performance	    Better when frequent modifications      Safer and often better for concurrent operations
+                    are needed
+    Use Case	    Caching, buffers, real-time state       Keys in HashMap, functional programming, multi-threading
+                    updates
+    Copy Behavior	Can be shared with caution	            Usually safe to share without concern
+
+1>Weather to use a userId or User object in Post and answer class
+Answer - Always use User as it is easy to understand and objects in java are Mutabale , so we do not copy
+        the User object but instead we store its pointing/reference , thus no extra memory and easy to
+        store
+
+2>

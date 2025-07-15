@@ -1,0 +1,6 @@
+1>Creational Design Pattern
+    Which deals with the creation of objects
+2>Sstructural Design pattern
+    Which deals with the creation of complex objects , not basic , but if we need to add some complex
+    layer on the base object then this is used
+3>

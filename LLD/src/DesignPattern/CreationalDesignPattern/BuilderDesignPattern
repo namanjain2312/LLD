@@ -1,0 +1,23 @@
+Builder Design Pattern
+1>Let say i have an student class which have about 50+ fields in it , now only rollnumber field
+is compulsary rest we can left blank
+Now in this case hoe to create constuctor of student calss , because one cinsturucotr could have
+name and roll number , one could have name last name and roll number etc
+So number of s=contructor becomes huges
+
+That where builder design pattern come into the picture
+
+
+Disavantage of Builder Design Pattern
+1>Code get duplicated as we duplicate the code in Student Calss and as well as in StudentBuilder class
+
+
+
+
+1>Step by step object creation
+2>StringBuilder can be either an interfcaec or an abtract class
+
+
+
+Differnece Between Decorator Design Pattern and Builder Pattern
+

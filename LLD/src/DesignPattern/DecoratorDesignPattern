@@ -1,0 +1,36 @@
+1>Decorator Design Pattern
+
+    Used when we need to add additional features on one object and then the new object
+    created uspe bhi hum naye feature add on kar skahte hai
+
+Use Case
+    1>Pizza Shop
+        Base Pizza
+        Toppings
+            ExtraCheese
+            Mushroom
+            Jalepeno
+        ExtraVeggies
+            Toamto
+            Onion
+            Brocolli
+    2>Coffee
+        Base COfee
+            DEcaf
+            Cappciono
+        Cream
+        Milk
+        SoyaMilk
+    3>Car
+        Base Car
+        SeatCover
+        FogLight
+        Ac
+        PowerSteering
+
+Why we need decorator pattern
+    To avoid ClassExplosion
+    Jaise ab car me case me agar decotatpr pattern follow nahi karte to kitini car banuga mai
+    BaseCar + Ac ki ek class
+    Base Car + Ac+ Power Steering ki ek etc etc
+    And this way we will explosde our numebr of class for all possible permutation and combination

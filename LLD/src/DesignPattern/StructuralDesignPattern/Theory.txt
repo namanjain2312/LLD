@@ -1,0 +1,17 @@
+Structural Design Patern
+    A Structural Design Pattern is a category of design patterns that focuses on how classes
+    and objects are composed to form larger, flexible, and reusable structures.
+    These patterns help ensure that if one part of a system changes, the overall
+    structure is still maintainable and scalable.
+
+
+
+1>Adapter
+2>Bridge
+3>Composite
+4>Decorator
+5>Facade
+6>Flyweight
+7>Proxy
+
+The above all are types of strucuural design pattern

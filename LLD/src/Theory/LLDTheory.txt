@@ -17,3 +17,5 @@ Answer - Always use User as it is easy to understand and objects in java are Mut
         store
 
 2>To create a has a relationship with an enum class we use dashed line for the same instead of normal line
+3>Is a relationship have arrow wiht a hollow pointer
+4>Has a relationship have a -> this

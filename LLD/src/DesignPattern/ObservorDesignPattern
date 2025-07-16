@@ -1,0 +1,54 @@
+1>In this there are two things
+    a>Observor
+    b>Observable
+    Whenever observable state changes , observor/mutiple observer is been triggered
+
+ObservableInterface
+    List<ObservorInterface> listObj
+    add(ObservorInterface obj) //register observor
+    remove(ObservorInterface obj)) //remove observor
+    notify(listObj)
+    setData()
+    getData()
+
+ObservorInterface
+    update()
+
+ObservableConcreteClass implemets ObservableInterface
+    add(ObservorInterface obj)
+    {
+        listObj.add(obj)
+    }
+
+    remove(ObservorInterface obj)
+    {
+        listObj.remove(obj);
+    }
+
+    notify)
+    {
+        foreach(obj in listObj)
+        {
+            obj.update();
+        }
+    }
+
+    setData(int t)
+    {
+        data=t;//data which is been changes
+                //could write some business logic if that business logic permits then only call the obserovr
+
+        notify();
+    }
+
+ObservorConcreteClass implemets ObservorInterface
+    ObservableInterface obj;
+
+    update()
+    {
+        obj.getData()
+    }
+
+
+
+

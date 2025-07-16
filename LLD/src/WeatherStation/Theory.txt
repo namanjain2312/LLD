@@ -1,0 +1,52 @@
+FunctionalReuiqemtn
+1>We have an weather station as soon as the weather changes we need to notify the mobile and tv obsers
+observing the temperature
+
+Standard example of observor pattern
+
+TVDisplayObserver
+MobileDisplayObserver
+
+
+interface WSObservable
+    add(DisplayObservor obj)
+    remove(DisplayObservor obj)
+    notify()
+    setTemp()
+
+WSObservationImpl implemts WSObservable
+    List<DisplayObservor> displayList;
+    int temp;
+    add()
+    remove()
+    notify()
+    {
+        foreach(obj in diaplyList)
+        {
+            obj.update()
+        }
+    }
+    setData(int newTemp)
+    {
+        currentTemp = newTemp;
+        notify();
+    }
+
+
+Interface DisplayObservor
+    update()
+
+MobileDisplayObservor
+    WSObservable o
+    MobileDisplayObservor(WSObservable o)
+    {
+        this.obj = o;
+    }
+
+    update()
+    {
+
+    }
+
+TVDisplayObservor
+

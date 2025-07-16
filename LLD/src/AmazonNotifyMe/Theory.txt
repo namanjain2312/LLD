@@ -1,0 +1,28 @@
+1>>Implement Notify Me Amazon Feature , as the product is out of the stock
+and notify the user when the product comes back in the stock and implement notify me for the same
+Jo jitne customers ne mujhe keh rakha hai unn sab ko notification chale jaaye
+2>Use of observor design pattern
+
+
+interface StockObservable
+    add(NotficationAlertObserver observer)
+    remove(NotificationAlertObservor observor)
+    notifySubscribers()
+    setStockCount(int newStockAdded)
+    int getStockCount()
+
+
+IphoneObservale implemts StockObservable
+    List<NotificationAlertObservor> observorList
+    int stockCount
+
+    add
+    remove
+    notitfySubcriber
+    getStockCount
+
+interface NotificationAlertObservor
+    update()
+
+EmailAlertObservorImpl implements NotificationAlertObservor
+    String emailId

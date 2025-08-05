@@ -1,0 +1,7 @@
+1>Synchronized
+    The synchronized keyword in Java is used to prevent concurrent access to critical
+    sections of code, ensuring thread safety.
+    synchronized ensures that only one thread can access that code block or method at a time.
+    synchronized (someSharedObject) {
+        // critical section
+    }

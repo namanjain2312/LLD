@@ -1,0 +1,43 @@
+1>LRU Cache
+2>LRU (Least Recently Used) Cache is a data structure that stores a limited number of key-value pairs,
+ evicting the least recently accessed item when capacity is full.
+
+Major Design Pattern Used are
+    Strategy (EvictionPolicy interface)
+    Factory (CacheFactory)
+
+
+EvictionPolicy Interface
+   a>Acts as a strategy interface (Strategy Design Pattern).
+   b>Allows defining different cache eviction policies (like LRU, LFU).
+   c>get(K key)
+   d>put(K key, V value)
+
+LRUCachePolicy
+    a>Implements EvictionPolicy.
+    b>Internally maintains:
+      A ConcurrentHashMap for O(1) key lookup.
+      A Doubly Linked List to track the usage order.
+    c>Head is the most recently used; Tail is least recently used.
+    d>On get: Move accessed node to the front (head).
+    e>On put: Remove tail if full, insert new node at the head.
+
+Node<K, V>
+    a>Represents each entry in the cache.
+    b>Contains key, value, prev, and next pointers for doubly linked list navigation.
+
+Cache<K, V>
+    a>Wraps the eviction policy implementation.
+    b>Acts as a façade for cache clients.
+    c>Delegates actual storage logic to the eviction policy.
+
+CacheFactory
+    Implements Factory Design Pattern.
+    Used to instantiate the cache with a chosen policy (like LRU).
+    Promotes flexibility and separation of concerns.
+
+Thread Safety
+    Synchronized blocks are used in LRUCachePolicy methods (get, put) to ensure thread safety.
+    ConcurrentHashMap handles concurrent access for the map.
+    However, the synchronized (this) block ensures atomicity across both the map and linked list operations.
+

@@ -1,0 +1,81 @@
+Zoom Car
+Car Rental System
+
+Rough Flow
+1>
+
+
+User
+    userId
+    userName
+    DOB
+    DrivingLicence
+
+
+Location
+    City
+    Pincode
+    Address
+    Etc
+    Etc
+
+Store
+    VehicleInventoryManagement
+    storeId
+    Location
+    List<Reservation>
+
+VehicleInventoryManagement
+    List<Vehicle>
+    all crud operation on vehicle
+
+CarInventoryManagemetn ///if we need add in future to add bioke
+
+class Vehicle
+    vechleId
+    vechuleNumber
+    Enum VechtleType
+    int average
+    int kmDriven
+    int dailyRentCost
+    int hourlyRentCost
+    Enum Status
+
+Enum Status
+    Active
+    Inactive
+
+class CarVehicle extends Vehicle
+
+Enum VehicleType
+    CAR
+    BIKE
+
+Reservation
+    reservationId
+    User
+    Vehicle
+    Date
+    BookedFromDate
+    BookedTillDate
+    Enum ReservationStatus
+
+Enum ReservationStatus
+    Scheduled
+    Closed
+    Cancelled
+
+VehicleRentalSystem
+    List<User>
+    List<Store>
+    //crud operation on stores and users
+
+
+Bill
+    Reservation res
+    boolean isPaid
+    double amount
+
+Payment
+    Bill bill
+    payBill()

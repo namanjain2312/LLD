@@ -1,0 +1,31 @@
+TickTacToe
+
+Board
+    int size
+    PlayingPeice[][] borad
+    addPeivce
+
+Player
+    name
+    PlayingPeice
+
+PlayingPeice
+    PeiceType peiceType
+    PlayingPeice(PeiceType pc)
+
+PlayingPeiceZero extends PlayingPeice
+    super(PeiceType.Zero)
+
+PlayingPeiceCross
+    super(PeiceType.Cross)
+
+ENum PeiceType
+    Cross
+    zero
+
+Game
+    Dequeue<Players>
+    Board
+    intilizeGame()
+    startGame()
+

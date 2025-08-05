@@ -33,51 +33,6 @@ This is the entry point of any standalone Java program
   Double for double
   Boolean for boolean
 
-4>List vs Array List
-List is basically a interface and array list is a concrete class
-In list we could the iplmentation later on , but in array list it is not possible
-Like if we declare a list ealrlier but now
-List<String> names = new ArrayList<>();
-names = new LinkedList<>(); // converted in linked list
-Prefer List in Most Cases
-
-5>Declration Of List
-    List<Integer> numbers = new ArrayList<>();
-    List<Integer> numbers = new ArrayList<>(Arrays.asList(10, 20, 30));
-    List<Integer> numbers = new ArrayList<>();
-    numbers.add(10);
-    numbers.add(20);
-    numbers.add(30);
-
-6>Traverse a List in Java
-    for (Integer num : numbers) {
-        System.out.println(num);
-    }
-
-    for (int i = 0; i < numbers.size(); i++) {
-        System.out.println(numbers.get(i));
-    }
-
-    Iterator<Integer> it = numbers.iterator();
-    while (it.hasNext()) {
-        System.out.println(it.next());
-    }
-
-7>Synchronized
-    The synchronized keyword in Java is used to prevent concurrent access to critical
-    sections of code, ensuring thread safety.
-    synchronized ensures that only one thread can access that code block or method at a time.
-    synchronized (someSharedObject) {
-        // critical section
-    }
-
-8>Maps in java
-    Map<String, Integer> map = new HashMap<>();
-    map.put("Apple", 100);
-    for (Map.Entry<String, Integer> entry : map.entrySet()) {
-        System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
-    }
-
 9>Integer → String
     int num = 123;
     String str = Integer.toString(num);  // "123"

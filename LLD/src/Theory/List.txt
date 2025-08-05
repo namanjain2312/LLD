@@ -1,0 +1,29 @@
+1>List vs Array List
+List is basically a interface and array list is a concrete class
+In list we could the iplmentation later on , but in array list it is not possible
+Like if we declare a list ealrlier but now
+List<String> names = new ArrayList<>();
+names = new LinkedList<>(); // converted in linked list
+Prefer List in Most Cases
+
+2>Declration Of List
+    List<Integer> numbers = new ArrayList<>();
+    List<Integer> numbers = new ArrayList<>(Arrays.asList(10, 20, 30));
+    List<Integer> numbers = new ArrayList<>();
+    numbers.add(10);
+    numbers.add(20);
+    numbers.add(30);
+
+3>Traverse a List in Java
+  for (Integer num : numbers) {
+      System.out.println(num);
+  }
+
+  for (int i = 0; i < numbers.size(); i++) {
+      System.out.println(numbers.get(i));
+  }
+
+  Iterator<Integer> it = numbers.iterator();
+  while (it.hasNext()) {
+      System.out.println(it.next());
+  }

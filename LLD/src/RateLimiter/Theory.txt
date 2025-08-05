@@ -1,0 +1,30 @@
+Rate Limiter (4 Algos)
+1>Fixed Window
+2>Sliding Window
+3>Token Bucket
+4>Leaked Bucket
+
+1>Fixed Window
+Variable Used
+    a>WindowSize
+    b>maxRequestAllowed
+    c>ConcurrentHashMap<String, WindowDetails> //Ip address vs each window ip curr window status details
+    d>WindowDetails
+        Integer windowStartTime
+        Integer requestCountInCurrWindow
+
+Request will comes to us , we will allow only a preset number of request in that window
+
+2>Sliding Window
+Variable Used
+    a>WindowSize
+    b>maxRequestAllowed
+    c>ConcurrentHashMap<String, ConcurrentLinkedDeque<Long>> userMap = new ConcurrentHashMap<>();
+    //Ip Address vs Deque<TimeInMillis>
+    d>So basicallt we will check our dequeue size and the last time of the request in deque - the current time ,
+    if dequeu size is == maxAllowedRequest and so on and so for
+Request will comes to us , we will allow only a preset number of request in that sliding window
+
+3>Token Bucket
+Variable Used
+    a>Bucket

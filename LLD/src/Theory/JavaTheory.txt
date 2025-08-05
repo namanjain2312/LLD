@@ -35,5 +35,37 @@
     d>Final Class → Cannot be extended (inherited)
     e>Final Parameter → Cannot be modified inside method
 
+5>Java Generics
+    Example
+    List list = new ArrayList();
+    list.add("Naman");
+    list.add(54);
+    list.add(new Scanner(System.in));
+    now as we can see , as i have not declared the list as any particular varibale , it could store any type
+    in form of object , now
+    int a = list.get(1);//get elemnt at position 1
+    now the above line would give error , at compile time itself , as it will say that we have not declared our list
+    with anything , so get will return an varibale of type object so i need explicitly cast as int in order to store
+    value in a
+    int a = (int) list.get(1) ;//like this
+    So if i need to add only integer in my array list to kaise karu
+    List<Integer> list = new ArrayList();
+    int a =  list.get(1) ;//now we will get no error for this line , no need to cast as int
+
+    Now this issue can come at runtime
+    like in the above example where we did not declare the generic we try to do this
+    int a = list.get(0);//at position 0 we have Naman ,
+    now the above line will give no compile time error , but will give runtime error ,  thats why we use generics
+
+    Generics Class
+
+    class MyGeneric<T1,T2> {
+        //constructor
+        //getter and setters
+    }
+
+    MyGeneric<String,Integer> g1 = new MyGeneric(23,"Naman");
+    Integer a = g1.getT1(); // will return error
+    String b = g1.getT1();// will work fine
 
 

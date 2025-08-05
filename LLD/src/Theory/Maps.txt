@@ -1,0 +1,32 @@
+0>Difference between concurrent hash map vs hash map
+    a> Cocurrent hash map locks that key in a mutithreaded enviorment , so two thread are writing a same key in
+    concurrent hash map then concurrent hash map will lock that key , and thread will write one by one ,
+    but this will not be case in simple using hash map
+    b> Concurrent hash map is thread-safe
+
+
+1>Cons of Using ConcurrentHashMap Over HashMap
+    a> Performance Overhead (in Single-Threaded or Lightly-Contended Scenarios)
+    b> No Null Keys or Null Values Allowed in concurent hash map
+    c> More Complex Internals = Harder Debugging
+
+
+1>Maps in java
+    Map<String, Integer> map = new ConcurrentHashMap<>();
+
+    //Inserts/updates the value.
+    map.put("apple", 100);
+
+    map.get("apple");
+
+    map.remove("apple");
+
+    map.containsKey("apple");
+
+    //Puts only if key is not already present (atomic).
+    map.putIfAbsent("apple", 5);
+
+
+    for (Map.Entry<String, Integer> entry : map.entrySet()) {
+        System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+    }

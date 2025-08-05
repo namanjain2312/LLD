@@ -1,0 +1,57 @@
+Pizza Shop
+
+1>Use of decorator design pattern
+
+
+
+abtract class BasePizza
+    cost()
+
+abtract ToppingDecorator
+
+so basically ToppingDecorator is both has  a and is a Base Pizaa , dono hai ye
+
+public abstract class BasePizza
+    public abtract int cost()
+
+public class Farmhouse extends BasePizza
+    public int cost()
+        return 200;
+
+public class VeggieDelight extends BasePizza
+    public int cost()
+        return 120;
+
+public class Magherita extends BasePizaa
+    public int cost()
+        return 100;
+
+public abtract class ToppingDecorator extends BasePizza
+
+public class ExtraCheese extends ToppingDecoraotor
+    BasePizza basePizza;
+    public ExtraCheese(BasePizza pizza)
+        this.basePizza = pizza;
+    public int cost()
+        return this.basePizza.cost() + 10 ;
+
+public class Mushroom extends ToppingDecoraotor
+    BasePizza basePizza;
+    public Mushroom(BasePizza pizza)
+        this.basePizza = pizza;
+    public int cost()
+        return this.basePizza.cost() + 15 ;
+
+now let say mujhe magerita + extra cheese chayiye
+
+BasePizza pizza=  new ExtraCheese(new Magretia())
+pizza.Cost()
+= 110
+
+Magretia + extracheese+ mushroom
+
+BasePizza pizza=  new Mushrrom(new ExtraCheese(new Magretia()))
+pizza.Cost()
+= 125
+
+

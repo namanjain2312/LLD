@@ -1,0 +1,13 @@
+
+1>Deque
+Deque<String> deque = new ConcurrentLinkedDeque<>();
+
+Add to front	   offerFirst(String s)
+Add to back        offerLast(String s)
+Remove from front  pollFirst() //Returns null if empty
+Remove from back   pollLast()  //Returns null if empty
+Peek front         peekFirst() //Returns null if empty
+Peek back          peekLast()  //Returns null if empty
+
+add(int index, String)	Add at specific index
+

@@ -1,0 +1,110 @@
+1>ElevatorCar
+    Direction
+        Up
+        Down
+    Status
+        Moving
+        Idle
+    CurrentFloow
+    Display
+    InternalButton
+    Doors
+
+2>Floors
+3>Building
+4>ExternalButton
+5>LiftDispatchAlgo
+    Odd/Even
+    FixedFloor
+    MinimumSeekTime
+
+
+
+class Display
+    int floor
+    Direction dir
+
+class ElevatorCar//its a dumb object
+    int id
+    Display
+    int currFloor
+    Direction dir
+    Status status
+    InternalButton
+    Door
+    move(int destinationFloor,Direction dir)
+
+Enum Direction
+    Up
+    Down
+
+Enum Status
+    Idle
+    Moving
+
+class InternalButton
+    InternalButtonDispatcher
+    pressButton(int button)
+
+class ElevatorController // specifc to a single elevator if three elevlator then three controller
+    ElevatorCar obj
+    submitNewRequest(Floor , Direction)
+    controlElevatorCar()
+
+InternalButtonDispatcher
+    List<ElevatorController>//every list ka controller
+    submitRequqest(Lift Id)
+
+ExternalButton
+    ExternalButtonDispatcher
+    pressButton(int floor,Direction dir)
+
+
+ExternalButtonDispacther
+    List<ElevatorController>
+    submitRequest(int floor,Direction dir)
+
+OddEvenDispacther implements ExternalButtonDispacther
+
+FixedFlorrDiapthacer implemetns ExternalButtonDispacther
+
+Floor
+    floorId
+    ExternalButton
+
+Building
+    List<Floor>
+
+
+Algoritihm
+
+1>User Want to Up   Lift Goes Up
+2>User Want to Up   Lift Goes Up
+
+SCAN Algorithm (Elevator Algorithm)
+1>The disk arm starts at a certain position and moves in a specific direction (e.g., toward higher cylinder numbers).
+2>It services all requests in that direction until it reaches the last request in that direction.
+3>Then, it reverses direction and services all requests in the opposite direction.
+4>This process repeats like an elevator.
+
+Diadvantage of this Algo is that
+1>Let say i press up at 0 and i want to go till 5 lift will leave me at 5 but let say if its 50 floor
+building lift will go till 50 floor irrespetice of there are any up request and then it will come
+back , so unecessary travel of lift and longer waiting for a person whoo need to go down
+
+Look Algorithm
+Optized version of scan , basically check if there is any alteset one request furhther in that direction
+if yes it will go otherwise elevator will change its dircecion from there itslef
+
+Jab lift ka direction up hai , then it will sove first the lower floorr number problems just above that floors
+and vice versa
+
+MinPQ (For dir UP)
+
+Max PQ(For fir Down)
+
+Queue<>(Pending Job)
+
+//let say mai 5 pe huu adn dir is up , then i could fullfill all the above floor
+request whoom want to go up and i will do that in asc order but what about floor 3,4 who want to go up ,
+so thiose job would be put in the queue

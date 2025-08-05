@@ -1,0 +1,54 @@
+Factory vs Abtract Factory DEsign Pattern
+1>Jab bhi hume object create karna hota hai on a condition then we use Factory pattern
+2>
+
+Basic Factory pattern
+
+interface Shape
+    void draw()
+
+class Circle implemts Shape
+    draw();
+
+class Square implements Shape
+    draw();
+
+class Rectanle implements Shape
+    draw();
+
+class ShapeFactory
+    Shape getShape()
+    {
+    switch is been used heere
+        //bussiness logic
+
+    }
+
+
+Abtract Factory Pattern
+Factory of Factory jab chayiye ho tab use karte hai
+
+interface Vechile
+    average()
+
+class BMW implemts Vechile
+    average()
+class Mercedes implemts Vechile
+    average()
+class Honda implemts Vechile
+    average()
+class Maruti implemts Vechile
+    average()
+
+interface VechileFactory
+    getVechile()
+
+class LuxuryFactory implemts VechileFactory
+    Vechile getVechile()
+    it will only have option to  return BMW or Merceds
+
+class OrdinaryFactory implemts VechileFactory //this is returing object of Vechile
+    Vechile getVechile()
+    it will only have option to  return Honda or Maruti
+
+class VechileFactory getVechileFactory() //this is returing object of vechile factory

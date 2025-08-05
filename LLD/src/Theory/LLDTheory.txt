@@ -19,3 +19,7 @@ Answer - Always use User as it is easy to understand and objects in java are Mut
 2>To create a has a relationship with an enum class we use dashed line for the same instead of normal line
 3>Is a relationship have arrow wiht a hollow pointer
 4>Has a relationship have a -> this
+5>In interviews, always explain why you chose synchronized locks
+  I’ve used synchronized here because the locking needs are simple, and it keeps the code clear and correct.
+  If the concurrency level grows or I need more control (e.g., timeouts or fairness),
+  I’d refactor to use ReentrantLock.

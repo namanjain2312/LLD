@@ -1,0 +1,148 @@
+ParkingLot
+
+Rough Flow
+1>Vechile comes at gate
+2>Takes the tocket
+3>Park vechile at parking spot
+4>Go to exit gate
+5>Payment
+6>Exit the building
+
+Requiremtn Clarification
+1>How many entrances and exits
+2>Vechile
+3>Ticket
+4>Entrance Gate
+6>Parking Spot
+7>Different Types of Stops
+    a>Two veechler
+    b>Four veeclker
+8>Exit Gate
+9>Hourly base charge of minute based charge
+10>ParkingSpoot should be nearest to thje entrance // can be implemented using min heap
+11>Parking Floors
+12>
+
+
+Vechile
+    vechileNo
+    VechileType
+
+Enum VechleType
+    TwoWheelere
+    FourWheeler
+
+Ticket
+    entryTime
+    PafrkingSpot parkingSpot
+    Vechile vechile
+
+EntranceGate
+    Ticket
+    ParkingSpotManagerFactory
+    ParkingSpotManager
+        findSpace()
+    bookSpot()
+    generateTicket()
+
+    findParkingSpace
+    updateParkingSpace
+    generateTicket
+
+ExitGate
+    Ticket
+    CostComputationFacoty
+    CostCoputatuon
+        cost
+    Payment
+    ParkingSpotManagerFactory
+    ParkingSpotManager
+        removeVechole
+
+CostComputationFactory
+    returns
+
+interfaxce CostComputation
+    cost()
+TwoWheelereCost implements CostComputation
+    cost()
+FourWheelereCost implements CostComputation
+    cost()
+iterface PricingStartegy
+    getPrice()
+
+class DefaultStrategy implemts  PricingStartegy
+    getPrice()
+
+class HourlyStragtey implements PricingStartegy
+    getPrice()
+
+
+interface ParkingSpot
+    id
+    isEmpty
+    Vechile vechile
+    Price
+    ParkingSpotType
+    parkVechile()
+    {
+        isEmpty = false;
+    }
+    removeVechile()
+    {
+        vechile = null;
+        isEmpty = true;
+    }
+
+class TwoWheelerSpot implemets ParkingSpot
+    Price()
+
+class FourWheeler implements ParkingSpot
+    Price()
+
+class ParkingSpotManager
+    List<ParkingSpot>
+    ParkingSpotManager(List)
+    {
+
+    }
+    findParkingSpace()
+    addParkingSpcae()
+    removeParkingSpace()
+    parkVechile()
+    removeVechile()
+
+class TwoWheelerParkingSpotManger extends ParkingSpotManager
+
+class FourWheelerParkingSpotManger extends ParkingSpotManager
+    FourWheelerParkingSpotManger(List)
+    {
+        will call super to send its list to parent
+    }
+
+interface ParkingStrategy
+
+class NearestToEntrance implements ParkingStrategy
+    findSpcace()
+
+class NEarestToExit implements ParkingStrategy
+    findSpcace()
+
+class default implements ParkingStrategy
+    findSpcace()
+
+
+ParkingSpotType
+    TwoVeechlerParkiongSpot
+    FourVeechlerParkingSpot
+
+ParkingManagerFactory
+    getParkingManager(VechileType )
+
+
+ExitGate
+    CostCalculation
+    Payment
+    freeParkingSpot
+
+

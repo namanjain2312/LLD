@@ -1,0 +1,45 @@
+Meeting Scheduler
+Requirements
+a>You built a meeting scheduler system that allows:
+b>Scheduling meetings between users in available rooms.
+c>Checking for conflicts (room capacity & overlapping time slots).
+d>Cancelling meetings.
+e>Finding available 30-minute slots for users in a room on a given day.
+
+Core Components:
+User
+    id
+    name
+
+MeetingRoom
+    id,
+    name,
+    capacity
+
+TimeSlot
+    Represents a meeting time (start and end).
+    Implements an overlaps() method to detect conflicts.
+
+Meeting
+    Holds details of a meeting: time slot, room, and list of participants.
+
+MeetingScheduler
+    Central manager to schedule, cancel meetings and find available slots.
+    Uses two maps:
+        roomMeetings → meetings scheduled in each room.
+        userMeetings → meetings scheduled for each user.
+
+Key Functionalities:
+    scheduleMeeting(...)
+        Validates room capacity.
+        Ensures room and users are free in the requested time slot.
+        Schedules the meeting and updates the maps.
+        Prints confirmation or failure messages.
+
+    cancelMeeting(...)
+        Removes the meeting from both room and user schedules.
+        Prints cancellation message.
+
+    getAvailableTimeSlots(...)
+        Suggests 30-min slots between start and end time.
+        Checks slot availability for both room and all users.

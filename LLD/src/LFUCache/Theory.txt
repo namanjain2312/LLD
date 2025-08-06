@@ -1,0 +1,5 @@
+Similar theory that of LRU Cache
+
+Major Design Pattern Used are
+    Strategy (EvictionPolicy interface)
+    Factory (CacheFactory)

@@ -1,81 +1,106 @@
 package MeetingScheduler;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class MeetingScheduler {
-    private final ConcurrentHashMap<Integer, ArrayList<Meeting>> roomIdVsListOfMeetings = new ConcurrentHashMap<>();
+    private final Map<User, List<Meeting>> userMeetings = new ConcurrentHashMap<>();
+    private final Map<MeetingRoom, List<Meeting>> roomMeetings = new ConcurrentHashMap<>();
+    private final List<MeetingRoom> meetingRooms = new ArrayList<>();
 
 
-    public MeetingScheduler(List<Room> rooms) {
-        for (Room room : rooms) {
-            roomIdVsListOfMeetings.putIfAbsent(room.getId(),new ArrayList<Meeting>());
-        }
+    public void addMeetingRoom(MeetingRoom room) {
+        meetingRooms.add(room);
+        roomMeetings.putIfAbsent(room, new ArrayList<>());
     }
 
 
-    public boolean scheduleMeeting(Meeting meeting) {
+    public Meeting scheduleMeeting(TimeSlot slot, MeetingRoom room, List<User> participants) {
 
-        if(!roomIdVsListOfMeetings.containsKey(meeting.getRoomId())) {
-            System.out.println("Invalid Room Id");
-            return false;
+        if (participants.size() > room.getCapacity()) {
+            System.out.println("Room capacity exceeded.");
+            return null;
         }
 
-
-        // Check if room is free for the meeting
-        if (!isRoomAvailable(meeting.getRoomId(), meeting.getStart(), meeting.getEnd())) {
-            System.out.println("Room " + meeting.getRoomId() + " is not available.");
-            return false;
+        // Check room availability
+        for (Meeting m : roomMeetings.get(room)) {
+            if (m.getSlot().overlaps(slot)) {
+                System.out.println("Room is not available at the given time.");
+                return  null;
+            }
         }
 
-        ArrayList<Meeting> meetingArrayList = roomIdVsListOfMeetings.get(meeting.getRoomId());
-
-        synchronized (meetingArrayList) {
-            meetingArrayList.add(meeting);
-        }
-
-        System.out.println("Meeting '" + meeting.getTitle() + "' scheduled successfully.");
-        return true;
-    }
-
-
-    public boolean isRoomAvailable(int roomId, LocalDateTime start, LocalDateTime end) {
-        List<Meeting> meetings = roomIdVsListOfMeetings.get(roomId);
-
-        synchronized (meetings) {
+        // Check participants' availability
+        for (User user : participants) {
+            List<Meeting> meetings = userMeetings.getOrDefault(user, new ArrayList<>());
             for (Meeting m : meetings) {
-                if (m.getStart().isBefore(end) && m.getEnd().isAfter(start)) {
-                    return false; // Room busy
+                if (m.getSlot().overlaps(slot)) {
+                    System.out.println("Participant " + user.getName() + " is not available.");
+                    return null;
                 }
             }
         }
-        return true;
+
+        Meeting meeting = new Meeting(slot, room, participants);
+        roomMeetings.get(room).add(meeting);
+        for (User user : participants) {
+            userMeetings.computeIfAbsent(user, k -> new ArrayList<>()).add(meeting);
+        }
+
+        // ✅ Success message
+        System.out.println("✅ Meeting scheduled from " + slot.getStart() + " to " + slot.getEnd() +
+                " in room '" + room.getName());
+
+        return meeting;
     }
 
-    public ArrayList<Integer> getAvailableRooms(LocalDateTime start, LocalDateTime end) {
-        ArrayList<Integer> availableRooms = new ArrayList<>();
+    public void cancelMeeting(Meeting meeting) {
+        roomMeetings.get(meeting.getRoom()).remove(meeting);
+        for (User user : meeting.getParticipants()) {
+            userMeetings.get(user).remove(meeting);
+        }
 
-        for (Map.Entry<Integer, ArrayList<Meeting>> entry : roomIdVsListOfMeetings.entrySet()) {
-            List<Meeting> meetings = entry.getValue();
+        // ✅ Cancellation message
+        System.out.println("✅ Meeting from " + meeting.getSlot().getStart() + " to " + meeting.getSlot().getEnd()
+                + " in room '" + meeting.getRoom().getName() + "' has been cancelled.");
+    }
 
-            boolean isRoomFree = true;
+    public List<TimeSlot> getAvailableTimeSlots(List<User> users, MeetingRoom room, LocalTime dayStart, LocalTime dayEnd) {
+        List<TimeSlot> availableSlots = new ArrayList<>();
 
-            synchronized (meetings) {
-                for (Meeting m : meetings) {
-                    if (m.getStart().isBefore(end) && m.getEnd().isAfter(start)) {
-                        isRoomFree = false;
-                        break;
-                    }
+        LocalTime time = dayStart;
+        while (time.plusMinutes(30).compareTo(dayEnd) <= 0) {
+            TimeSlot candidateSlot = new TimeSlot(time, time.plusMinutes(30));
+
+            boolean isAvailable = true;
+
+            for (Meeting m : roomMeetings.getOrDefault(room, Collections.emptyList())) {
+                if (m.getSlot().overlaps(candidateSlot)) {
+                    isAvailable = false;
+                    break;
                 }
             }
 
-            if (isRoomFree) {
-                availableRooms.add(entry.getKey());
+            if (isAvailable) {
+                for (User user : users) {
+                    for (Meeting m : userMeetings.getOrDefault(user, Collections.emptyList())) {
+                        if (m.getSlot().overlaps(candidateSlot)) {
+                            isAvailable = false;
+                            break;
+                        }
+                    }
+                    if (!isAvailable) break;
+                }
             }
+
+            if (isAvailable) {
+                availableSlots.add(candidateSlot);
+            }
+
+            time = time.plusMinutes(30);
         }
-        return availableRooms;
+
+        return availableSlots;
     }
 
 }

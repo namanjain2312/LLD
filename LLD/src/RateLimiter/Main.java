@@ -1,6 +1,6 @@
 package RateLimiter;
 
-public class RateLimitingDemo {
+public class Main {
     public static void main(String[] args) {
         RateLimiter fixed = RateLimiterFactory.createRateLimiter(RateLimiterType.FIXED_WINDOW, 3, 5000);
         RateLimiter sliding = RateLimiterFactory.createRateLimiter(RateLimiterType.SLIDING_WINDOW, 3, 5000);

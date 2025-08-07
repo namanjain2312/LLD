@@ -1,34 +1,47 @@
+Functional Requirements
+    a>Users can rate a product from 1 to 5 stars.
+    b>Users can update their rating.
+    c>Get average rating of a product.
+    d>Support product and user lookup.
+
 Core Entities
-1. Users
-2. Rating per every user
-3. Product Id
+    a>User
+        userId
+        name
+    b>Product
+        productId
+        name
+        description
+    c>Rating
+        ratingId
+        userId
+        productId
+        ratingValue (1-5)
+        timestamp
 
-API
-1. Get Form For That Product Id
-2. Submit Rating for a product id provided userId and rating
-3. Cater different type of ratings
-4. Create Two Different Types of rating
-5. For a user he could submit rating for two products having different rating
+Product
+    productId
+    name
+    Map<String,Rating> ratingMap //userId vs Rating
+    double averageRating
 
-DB Requirements
-1. To fetch existing rating system for a productId , if not then provide default
-productId vs ratingType
-2. productId vs [UserId and there rating]
+Rating
+    user
+    product
+    int ratingValue
 
-Flaw in the above design is that if we need to have multiple rating system i.e. one of 7 one of 3 then
-i need to create 100 of classes to cater them
+RatingService
+    rateProduct(user, product, rating)
+    getAverageRating(product)
+    getRatingsByProduct(product)
+    getUserRating(user, product)
 
-Rating Class
-    1.minRating
-    2.maxRating
-    3.ratingDescription
-    4.Rating(int minRating,int maxRating,String description)
 
-ProductRaterController
-    1.Map of productIdVsRating
-    2.CreateRatingForProductId(int productId,int maxRating,int minRating,int ratingDescription)
-    3.Map of productId vs (Map of userId vs ratingPoints)
-    4.ValidateRating(int productId,int ratingPoints,int userId)
-    5.AssignRating(int productId,int ratingPoints,int userId)
-    6.GetAllRatingForProductId(int productId)
+1>Optimize getAverageRating() – from O(n) to O(1)
+Instead of computing the average each time by iterating through all ratings (which is O(n)),
+you can maintain two fields:
+private int totalRatingValue = 0;
+private int totalRatingCount = 0;
 
+2>To reduce addOrUpdateRating to O(1), you could maintain a Map<String, Rating> (userId to Rating)
+instead of a List<Rating> , otherwise for now we are using O(n) time complexity

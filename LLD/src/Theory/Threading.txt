@@ -2,6 +2,21 @@
     The synchronized keyword in Java is used to prevent concurrent access to critical
     sections of code, ensuring thread safety.
     synchronized ensures that only one thread can access that code block or method at a time.
-    synchronized (someSharedObject) {
+    synchronized (someObject) {
         // critical section
     }
+
+    The parameter (someObject) is the monitor object or lock. Here's what it does:
+        It acts as a key. Only one thread can hold the monitor lock for that object at a time.
+        Other threads trying to synchronized on the same object are blocked until the lock is released.
+        If different threads use different objects for synchronization, they do not block each other.
+
+    If you use synchronized(this)
+        Locks on the current instance of the class.
+        Ensures only one thread per instance can execute that block at a time.
+
+    If we lock a userId
+        More concurrency and better scalability.
+        Only threads operating on the same userId will block each other.
+        High-performance
+

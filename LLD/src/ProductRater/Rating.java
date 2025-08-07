@@ -1,40 +1,21 @@
 package ProductRater;
 
 public class Rating {
+    private final User user;
+    private final Product product;
+    private final int ratingValue; // 1 to 5
 
-    private int minRating;
-    private int maxRating;
-    private String description;
-
-    Rating(int minRating,int maxRating,String description)
-    {
-        this.minRating = minRating;
-        this.maxRating = maxRating;
-        this.description = description;
+    public Rating(User user, Product product, int ratingValue) {
+        if (ratingValue < 1 || ratingValue > 5) {
+            throw new IllegalArgumentException("Rating must be 1 to 5");
+        }
+        this.user = user;
+        this.product = product;
+        this.ratingValue = ratingValue;
     }
 
-    public int getMaxRating() {
-        return maxRating;
-    }
-
-    public void setMaxRating(int maxRating) {
-        this.maxRating = maxRating;
-    }
-
-    public int getMinRating() {
-        return minRating;
-    }
-
-    public void setMinRating(int minRating) {
-        this.minRating = minRating;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public User getUser() { return user; }
+    public Product getProduct() { return product; }
+    public int getRatingValue() { return ratingValue; }
 
 }

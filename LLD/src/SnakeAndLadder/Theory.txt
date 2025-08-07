@@ -1,0 +1,26 @@
+Functional Requirements
+    a>N x N board (usually 100 cells)
+    b>Players take turns rolling a dice (1-6)
+    c>Snakes send you down the board (head → tail)
+    d>Ladders send you up the board (bottom → top)
+    e>First player to reach the final cell wins
+    f>If a player rolls a 6, they get an extra turn
+
+Objects/Classes
+    a>Game
+    b>Board
+    c>Snake
+    d>Ladder
+    e>Player
+    f>Dice
+
+Board
+    List<Snake>
+    List<Ladder>
+    Size
+
+Game
+    DeQueue<Player>
+    Dice
+
+

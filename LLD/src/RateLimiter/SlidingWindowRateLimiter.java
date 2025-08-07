@@ -17,7 +17,7 @@ public class SlidingWindowRateLimiter implements  RateLimiter{
     public boolean allowRequest(String userId) {
         long now = System.currentTimeMillis();
         userMap.putIfAbsent(userId, new ConcurrentLinkedDeque<>());
-        Deque<Long> queue = userMap.get(userId);
+        ConcurrentLinkedDeque<Long> queue = userMap.get(userId);
 
         synchronized (queue) {
             while (!queue.isEmpty() && now - queue.peekFirst() > windowSizeInMillis) {

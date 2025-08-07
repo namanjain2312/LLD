@@ -22,7 +22,7 @@ public class TokenBucketRateLimiter  implements RateLimiter {
             int tokensToAdd = (int)(timeElapsed * refillRatePerMillis);
             if(tokensToAdd > 0) {
                 bucket.tokens = Math.min(capacity, bucket.tokens + tokensToAdd);
-                bucket.lastRefillTimestamp = now;
+                bucket.lastRefillTimestamp += (long)(tokensToAdd/refillRatePerMillis);
             }
 
             if (bucket.tokens > 0) {

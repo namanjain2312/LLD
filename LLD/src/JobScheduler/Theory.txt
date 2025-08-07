@@ -1,0 +1,9 @@
+JobScheduler
+Requirements
+    a>Schedules one-time or recurring tasks
+    b>Executes them at the right time
+    c>Uses n worker threads
+    d>Supports dynamic job submission
+
+
+
